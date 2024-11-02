@@ -1,0 +1,11 @@
+{
+  "name": "esprow",
+  "version": "1.0.0",
+  "description": "A test task for Esprow.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "l.popov",
+  "license": "ISC"
+}
