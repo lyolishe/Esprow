@@ -2,9 +2,10 @@
   "compilerOptions": {
     "outDir": "dist",
     "module": "commonjs",
-    "target": "es5",
+    "target": "ESNext",
     "lib": ["es6", "dom"],
     "sourceMap": true,
+    "strict": true,
     "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
@@ -12,10 +13,17 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "baseUrl": "src",
+    "esModuleInterop": true,
+    "paths": {
+      "@pages/*": ["Pages/*"]
+    }
   },
+  "include": ["**/*.ts", "**/*.tsx"],
   "exclude": [
     "node_modules",
     "build",
+    "webpack.config.ts"
   ],
 }

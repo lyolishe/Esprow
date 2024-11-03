@@ -2,10 +2,10 @@ import typeScriptEsLintPlugin from '@typescript-eslint/eslint-plugin';
 import esLintConfigPrettier from 'eslint-config-prettier'
 import { FlatCompat } from '@eslint/eslintrc';
 
-const _dirname = import.meta.dirname;
+const { dirname } = import.meta;
 
 const compat = new FlatCompat({
-	baseDirectory: _dirname,
+	baseDirectory: dirname,
 	recommendedConfig: typeScriptEsLintPlugin.configs.recommended,
 });
 
