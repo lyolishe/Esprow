@@ -24,6 +24,7 @@
   "exclude": [
     "node_modules",
     "build",
-    "webpack.config.ts"
+    "*.config.ts",
+    "*.config.js"
   ],
 }

@@ -4,7 +4,7 @@
   ],
   "*.{js,jsx,ts,tsx}": [
     "prettier --write",
-    "tsc --noEmit",
-    "eslint --fix"
+    "bash -c tsc --noEmit",
+    "bash -c eslint --fix --quiet -c"
   ]
 }
