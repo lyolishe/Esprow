@@ -1,12 +1,12 @@
 import React, { FC, useCallback, useMemo } from 'react';
 import { UserDTO } from '@shared/types';
-import { useDispatch } from 'react-redux';
 
 import css from './List.css';
 
-export const ListItem: FC<UserDTO> = (user) => {
-  const dispatch = useDispatch();
-  // const onEdit = useCallback(dispatch(event(user.id)))
+export const ListItem: FC<UserDTO & { onClick: (id: string) => void }> = ({ id, onClick, ...user }) => {
+  const onEdit = useCallback(() => {
+    onClick(id);
+  }, [onClick, id]);
   const propsToShow = useMemo(() => Object.entries(user).filter(([_, value]) => typeof value !== 'object'), [user]);
   return (
     <div className={css.item}>
@@ -15,6 +15,9 @@ export const ListItem: FC<UserDTO> = (user) => {
           {key}: {value}
         </span>
       ))}
+      <button className={css.editButton} role="button" onClick={onEdit}>
+        редактировать
+      </button>
     </div>
   );
 };

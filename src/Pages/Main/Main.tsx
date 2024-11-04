@@ -6,8 +6,10 @@ import { List } from '@pages/Main/components/List/List';
 
 export const Main: React.FC = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(setUsersListEvent(users));
   }, [dispatch]);
+
   return <List />;
 };
