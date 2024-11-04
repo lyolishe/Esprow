@@ -297,6 +297,7 @@ export default [
 			'react/require-render-return': 'error',
 			'react/style-prop-object': 'warn',
 			'react/jsx-no-useless-fragment': 'warn',
+			'react/function-component-definition': 'warn',
 			'jsx-a11y/accessible-emoji': 'warn',
 			'jsx-a11y/alt-text': 'warn',
 			'jsx-a11y/anchor-has-content': 'warn',
@@ -423,5 +424,8 @@ export default [
 			'arrow-body-style': 'off',
 		},
 	}),
-	esLintConfigPrettier
+	esLintConfigPrettier,
+	{
+		ignores: ['dist/', '*.config.ts'],
+	}
 ];

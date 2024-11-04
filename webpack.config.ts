@@ -1,5 +1,5 @@
-const path = require( "path");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackHtmlPlugin = require('html-webpack-plugin');
 
 const config = {
@@ -40,6 +40,8 @@ const config = {
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
       '@pages': path.resolve(__dirname, 'src/Pages'),
+      '@shared': path.resolve(__dirname, 'src/Shared'),
+      '@app': path.resolve(__dirname, 'src/App'),
     },
   },
   output: {
@@ -53,9 +55,17 @@ const config = {
           from: 'public',
           filter: (obj: string) => !obj.endsWith('html'),
         },
+        {
+          from: 'src/Shared',
+          filter: (obj: string) => obj.endsWith('json'),
+        },
       ],
     }),
-    new WebpackHtmlPlugin({ title: 'Esprow coding challenge', template: path.resolve(__dirname, 'public/index.html') }),
+    new WebpackHtmlPlugin({
+      inject: true,
+      title: 'Esprow coding challenge',
+      template: path.resolve(__dirname, 'public/index.html'),
+    }),
   ],
 };
 

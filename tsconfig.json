@@ -15,9 +15,12 @@
     "noImplicitAny": true,
     "strictNullChecks": true,
     "baseUrl": "src",
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "paths": {
-      "@pages/*": ["Pages/*"]
+      "@pages/*": ["Pages/*"],
+      "@shared/*": ["Shared/*"],
+      "@app/*": ["App/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],
