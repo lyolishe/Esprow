@@ -15,8 +15,8 @@ export const ListItem: FC<UserDTO & { onClick: (id: string) => void }> = ({ id, 
           {key}: {value}
         </span>
       ))}
-      <button className={css.editButton} role="button" onClick={onEdit}>
-        редактировать
+      <button className={css.editButton} type="button" onClick={onEdit}>
+        Edit
       </button>
     </div>
   );

@@ -12,7 +12,7 @@ export const Modal: FC<PropsWithChildren<ModalProps>> = ({ onClose, opened, name
   const modalContainer = useRef(null);
   const handleClickOutside = useCallback(
     (e: MouseEvent<HTMLDivElement>) => {
-      if (e.currentTarget === modalContainer.current) onClose?.();
+      if (e.target === modalContainer.current) onClose?.();
     },
     [onClose]
   );
