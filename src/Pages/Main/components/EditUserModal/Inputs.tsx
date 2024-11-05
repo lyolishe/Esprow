@@ -42,7 +42,7 @@ export const EmailInput: FC<InputsProps> = ({ onChange, value, id }) => {
   return <input id={id} name={id} value={value as string} onChange={handleChange} type="email" />;
 };
 
-export const NumberPicker: FC<InputsProps> = ({ onChange, value, id }) => {
+export const NumberInput: FC<InputsProps> = ({ onChange, value, id }) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
   };
@@ -67,7 +67,7 @@ const isLongString = (value: string) => value.length > 40;
 
 export const getInputByValue = (value: unknown) => {
   if (isNumber(value)) {
-    return NumberPicker;
+    return NumberInput;
   }
 
   if (isBoolean(value)) {
