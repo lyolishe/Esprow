@@ -21,6 +21,14 @@ const config: StorybookConfig = {
       '@shared': path.resolve(__dirname, '../src/Shared'),
       '@app': path.resolve(__dirname, '../src/App'),
     };
+
+    // @ts-expect-error long way to css-loader
+    config.module!.rules![5]!.use[1].options = {
+      importLoaders: 1,
+      modules: {
+        namedExport: false,
+      },
+    };
     return config;
   },
 };
