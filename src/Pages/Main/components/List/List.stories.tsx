@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { List } from '@pages/Main/components/List/List';
 
-import usersList from '@shared/data.json';
+import usersList from '@shared/data_qa.json';
 import { withReduxStateStory } from '@shared/utils/storybook';
 
 export default {

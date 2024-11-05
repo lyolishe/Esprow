@@ -13,5 +13,5 @@ module.exports = {
     '^@app(.*)$': '<rootDir>/src/App$1',
     '^@shared(.*)$': '<rootDir>/src/Shared$1',
   },
-  testPathIgnorePatterns: ['/node_modules/', '/dist/'],
+  testPathIgnorePatterns: ['/node_modules/', '/dist/', '/storybook-static/'],
 };

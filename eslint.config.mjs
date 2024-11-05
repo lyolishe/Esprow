@@ -355,6 +355,6 @@ export default [
   }),
   esLintConfigPrettier,
   {
-    ignores: ['dist/', '*.config.ts'],
+    ignores: ['dist/', '*.config.ts', 'storybook-static/'],
   },
 ];

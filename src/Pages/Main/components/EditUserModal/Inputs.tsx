@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC } from 'react';
+import React, { ChangeEvent, FC, MouseEvent } from 'react';
 
 type InputsProps = {
   id: string;
@@ -51,11 +51,11 @@ export const NumberInput: FC<InputsProps> = ({ onChange, value, id }) => {
 };
 
 export const RadioButton: FC<InputsProps> = ({ onChange, value, id }) => {
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange(e.target.checked);
+  const handleChange = (e: MouseEvent<HTMLInputElement>) => {
+    onChange(!(e.target as HTMLInputElement).checked);
   };
 
-  return <input id={id} name={id} value={value as string} onChange={handleChange} type="radio" />;
+  return <input id={id} name={id} checked={value as boolean} onClick={handleChange} type="radio" />;
 };
 
 const isNumber = (value: unknown): value is number => typeof value === 'number';

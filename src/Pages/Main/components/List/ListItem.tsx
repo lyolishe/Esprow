@@ -12,7 +12,7 @@ export const ListItem: FC<UserDTO & { onClick: (id: string) => void }> = ({ id, 
     <div className={css.item}>
       {propsToShow.map(([key, value]) => (
         <span>
-          {key}: {value}
+          {key}: {value.toString()} |
         </span>
       ))}
       <button className={css.editButton} type="button" onClick={onEdit}>

@@ -73,7 +73,6 @@ const config = {
     }),
     new WebpackHtmlPlugin({
       inject: true,
-      title: 'Esprow coding challenge',
       template: path.resolve(__dirname, 'public/index.html'),
     }),
   ],
