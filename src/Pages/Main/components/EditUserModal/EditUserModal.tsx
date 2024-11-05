@@ -16,19 +16,11 @@ export const EditUserModal: FC<Props> = ({ id, onClose }) => {
     produce((prevState, { fieldId, newValue }) => {
       prevState[fieldId] = newValue;
     }),
-    user,
-    (userData) =>
-      Object.entries(userData ?? {})
-        .filter(([key, value]) => key !== id && typeof value !== 'object')
-        .reduce((acc, [key, value]) => {
-          // @ts-expect-error expecting keys of object while assigning it
-          acc[key] = value;
-          return acc;
-        }, {})
+    user
   );
 
   const onFinish = () => {
-    dispatch(updateUserEvent({ ...user, ...formState }));
+    dispatch(updateUserEvent(formState));
     onClose();
   };
 

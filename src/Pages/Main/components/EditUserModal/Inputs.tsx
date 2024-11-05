@@ -1,4 +1,5 @@
 import React, { ChangeEvent, FC, MouseEvent } from 'react';
+import { UserDTO } from '@shared/types';
 
 type InputsProps = {
   id: string;
@@ -55,44 +56,25 @@ export const RadioButton: FC<InputsProps> = ({ onChange, value, id }) => {
     onChange(!(e.target as HTMLInputElement).checked);
   };
 
-  return <input id={id} name={id} checked={value as boolean} onClick={handleChange} type="radio" />;
+  return <input id={id} name={id} checked={value as boolean} onClick={handleChange} onChange={() => {}} type="radio" />;
 };
 
-const isNumber = (value: unknown): value is number => typeof value === 'number';
-const isBoolean = (value: unknown): value is boolean => typeof value === 'boolean';
-const isString = (value: unknown): value is string => typeof value === 'string';
-const isEmail = (value: string) => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
-const isDate = (value: string) => !isNaN(Number(new Date(value.split(' ').slice(0, 1).join(''))));
-const isLongString = (value: string) => value.length > 40;
-
-export const getInputByValue = (value: unknown) => {
-  if (isNumber(value)) {
-    return NumberInput;
-  }
-
-  if (isBoolean(value)) {
-    return RadioButton;
-  }
-
-  if (isString(value)) {
-    if (isEmail(value)) {
-      return EmailInput;
-    }
-    if (isDate(value)) {
-      return DatePicker;
-    }
-    if (isLongString(value)) {
-      return TextareaInput;
-    }
-    return TextInput;
-  }
-  return null;
+// despite the task, defining input type by its value is awful idea. here is adjustable map.
+const idToTypeMap: Partial<Record<keyof UserDTO, FC<InputsProps>>> = {
+  name: TextInput,
+  email: EmailInput,
+  age: NumberInput,
+  about: TextareaInput,
+  address: TextInput,
+  picture: TextInput,
+  isActive: RadioButton,
+  registered: DatePicker,
 };
 
 export const UserInput: FC<InputsProps> = ({ onChange, value, id }) => {
-  const InputType = getInputByValue(value);
+  const InputType = idToTypeMap[id as keyof UserDTO];
 
-  if (InputType === null) {
+  if (!InputType) {
     return null;
   }
 
