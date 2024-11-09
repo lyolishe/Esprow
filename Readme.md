@@ -26,6 +26,12 @@ Task is to create app, that displays list of users and with ability to edit them
 
 also `react/react-in-jsx-scope` should be disabled since React 17, but i didnt tho.
 
+## Perfomance matters
+![img.png](perf_metrics.png)
+
+- **first contentful paint** - .2s
+- **largest contentful paint** - .7s
+
 ## To be done:
 - docker and ci via github actions.
 - ux/ui improvements
