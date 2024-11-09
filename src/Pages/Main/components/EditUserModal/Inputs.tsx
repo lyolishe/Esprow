@@ -52,11 +52,11 @@ export const NumberInput: FC<InputsProps> = ({ onChange, value, id }) => {
 };
 
 export const RadioButton: FC<InputsProps> = ({ onChange, value, id }) => {
-  const handleChange = (e: MouseEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(!(e.target as HTMLInputElement).checked);
   };
 
-  return <input id={id} name={id} checked={value as boolean} onClick={handleChange} onChange={() => {}} type="radio" />;
+  return <input id={id} name={id} defaultChecked={value as boolean} onChange={handleChange} type="checkbox" />;
 };
 
 // despite the task, defining input type by its value is awful idea. here is adjustable map.
