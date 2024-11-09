@@ -18,6 +18,7 @@ Task is to create app, that displays list of users and with ability to edit them
 - **husky** and **lint-staged** for code quality control. **pre-commit**:  staged files linted, **pre-push**: Jest test run.
 - **commitlint** for linting commits by conventional.
 - webpack alias
+- **Docker**: you can build and deploy the app via docker
 
 ## Following linters are disabled on purpose:
 - `react/function-component-definition: warn`,
@@ -33,8 +34,7 @@ also `react/react-in-jsx-scope` should be disabled since React 17, but i didnt t
 - **largest contentful paint** - .7s
 
 ## To be done:
-- docker and ci via github actions.
-- ux/ui improvements
+- ci via github actions.
 - minifying
 - favicon
 - Enviroment-based api (local stored data or [real time generated](https://next.json-generator.com/docs))
