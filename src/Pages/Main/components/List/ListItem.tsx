@@ -11,9 +11,9 @@ export const ListItem: FC<UserDTO & { onClick: (id: string) => void }> = ({ id, 
   return (
     <div className={css.item}>
       {propsToShow.map(([key, value]) => (
-        <span>
-          {key}: {value.toString()} |
-        </span>
+        <div className={css.property}>
+          <span className={css.key}>{key}:</span> {value.toString()}
+        </div>
       ))}
       <button className={css.editButton} type="button" onClick={onEdit}>
         Edit

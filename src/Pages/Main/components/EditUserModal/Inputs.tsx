@@ -53,7 +53,7 @@ export const NumberInput: FC<InputsProps> = ({ onChange, value, id }) => {
 
 export const RadioButton: FC<InputsProps> = ({ onChange, value, id }) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange(!(e.target as HTMLInputElement).checked);
+    onChange((e.target as HTMLInputElement).checked);
   };
 
   return <input id={id} name={id} defaultChecked={value as boolean} onChange={handleChange} type="checkbox" />;
