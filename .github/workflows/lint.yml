@@ -2,8 +2,8 @@ name: lint 👅
 
 on:
   pull_request:
-    branches: [ $default-branch ]
-
+    types: [opened, synchronize, reopened, closed]
+    
 jobs:
   lint:
     runs-on: ubuntu-latest
