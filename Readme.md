@@ -4,6 +4,10 @@ This is a project with coding challenge for Esprow.
 
 Task is to create app, that displays list of users and with ability to edit them.
 
+To start locally install dependencies `npm ci` and then run `npm run start`. the app will be available on `localhost:3000`
+
+Or you can start the app via docker. 
+
 ## Requirements achieved:
 - Typescript used
 - React used
