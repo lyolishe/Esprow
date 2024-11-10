@@ -5,7 +5,7 @@ import users from '@shared/data.json';
 import { List } from '@pages/Main/components/List/List';
 
 export const Main: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch() as undefined;
 
   useEffect(() => {
     dispatch(setUsersListEvent(users));
