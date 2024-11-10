@@ -19,6 +19,7 @@ Task is to create app, that displays list of users and with ability to edit them
 - **commitlint** for linting commits by conventional.
 - webpack alias
 - **Docker**: you can build and deploy the app via docker
+- **CI via githib actions:** linting and testing configured (watch pr in the repo). It's easy to configure deploy also, but i have no unloaded server ;(
 
 ## Following linters are disabled on purpose:
 - `react/function-component-definition: warn`,
@@ -34,7 +35,6 @@ also `react/react-in-jsx-scope` should be disabled since React 17, but i didnt t
 - **largest contentful paint** - .7s
 
 ## To be done:
-- ci via github actions.
 - minifying
 - favicon
 - Enviroment-based api (local stored data or [real time generated](https://next.json-generator.com/docs))
