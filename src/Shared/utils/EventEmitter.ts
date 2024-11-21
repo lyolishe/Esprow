@@ -7,7 +7,7 @@ interface IEventEmitter<T extends string> {
 export class EventEmitter<T extends string> implements IEventEmitter<T> {
   private events: Partial<Record<T, Set<() => void>>> = {};
 
-  on = (event: T, cbs: () => void | Array<() => void>) => {
+  on = (event: T, cbs: (() => void) | Array<() => void>) => {
     const arrayedCbs = Array.isArray(cbs) ? cbs : [cbs];
     if (event in this.events) {
       arrayedCbs.forEach((cb) => {
@@ -18,7 +18,7 @@ export class EventEmitter<T extends string> implements IEventEmitter<T> {
     }
   };
 
-  off = (event: T, cbs: () => void | Array<() => void>) => {
+  off = (event: T, cbs: (() => void) | Array<() => void>) => {
     const arrayedCbs = Array.isArray(cbs) ? cbs : [cbs];
     if (!(event in this.events)) {
       throw new Error(`Nothing to unsubscribe from. Event: ${event}`);
