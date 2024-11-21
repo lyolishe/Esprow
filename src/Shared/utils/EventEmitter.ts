@@ -1,13 +1,15 @@
+type Callback = (...args: unknown[]) => void;
+
 interface IEventEmitter<T extends string> {
-  on: (e: T, cb: () => void | Array<() => void>) => void;
-  off: (e: T, cb: () => void | Array<() => void>) => void;
+  on: (e: T, cb: Callback | Array<Callback>) => void;
+  off: (e: T, cb: Callback | Array<Callback>) => void;
   emit: (e: T) => void;
 }
 
 export class EventEmitter<T extends string> implements IEventEmitter<T> {
-  private events: Partial<Record<T, Set<() => void>>> = {};
+  private events: Partial<Record<T, Set<Callback>>> = {};
 
-  on = (event: T, cbs: (() => void) | Array<() => void>) => {
+  on = (event: T, cbs: Callback | Array<Callback>) => {
     const arrayedCbs = Array.isArray(cbs) ? cbs : [cbs];
     if (event in this.events) {
       arrayedCbs.forEach((cb) => {
@@ -18,7 +20,7 @@ export class EventEmitter<T extends string> implements IEventEmitter<T> {
     }
   };
 
-  off = (event: T, cbs: (() => void) | Array<() => void>) => {
+  off = (event: T, cbs: Callback | Array<Callback>) => {
     const arrayedCbs = Array.isArray(cbs) ? cbs : [cbs];
     if (!(event in this.events)) {
       throw new Error(`Nothing to unsubscribe from. Event: ${event}`);
@@ -28,11 +30,11 @@ export class EventEmitter<T extends string> implements IEventEmitter<T> {
     });
   };
 
-  emit = (event: T) => {
+  emit = (event: T, ...args: unknown[]) => {
     if (!this.events[event]) {
       throw new Error(`Event ${event} not registred`);
     }
 
-    this.events[event]!.forEach((cb) => cb());
+    this.events[event]!.forEach((cb) => cb(...args));
   };
 }
