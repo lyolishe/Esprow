@@ -46,4 +46,13 @@ describe('EventEmiter', () => {
       expect(cb).toBeCalled();
     });
   });
+  it('should pass args', () => {
+    const ee = new EventEmitter<'event 1'>();
+    const cb = jest.fn();
+
+    ee.on('event 1', cb);
+    ee.emit('event 1', 'first arg', {}, () => {});
+
+    expect(cb).toHaveBeenCalledWith('first arg', {}, expect.any(Function));
+  });
 });
